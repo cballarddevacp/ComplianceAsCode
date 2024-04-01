@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<oval-def:oval_definitions xmlns:ind="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd  http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd  http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd  http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd  http://oval.mitre.org/XMLSchema/oval-definitions-5#linux linux-definitions-schema.xsd">
+  <oval-def:generator>
+    <oval:product_name>build_cpe.py from SCAP Security Guide</oval:product_name>
+    <oval:product_version>ssg: [0, 1, 73], python: 3.9.18</oval:product_version>
+    <oval:schema_version>5.11</oval:schema_version>
+    <oval:timestamp>2024-03-29T21:16:25</oval:timestamp>
+  </oval-def:generator>
+  <oval-def:definitions>
+    <oval-def:definition id="oval:ssg-installed_OS_is_macos1015:def:1" version="1" class="inventory">
+      <oval-def:metadata>
+        <oval-def:title>Apple macOS 10.15</oval-def:title>
+        <oval-def:affected family="unix">
+          <oval-def:platform>Apple macOS 10.15</oval-def:platform>
+        </oval-def:affected>
+        <oval-def:reference ref_id="cpe:/o:apple:macos:10.15" source="CPE"/>
+        <oval-def:description>The operating system installed on the system is
+      Apple macOS 10.15</oval-def:description>
+      </oval-def:metadata>
+      <oval-def:criteria operator="AND">
+        <oval-def:criterion comment="Installed operating system is part of the unix family" test_ref="oval:ssg-test_macos1015_macos_family:tst:1"/>
+        <oval-def:criterion comment="macOS 10.15 is installed" test_ref="oval:ssg-test_macos1015:tst:1"/>
+      </oval-def:criteria>
+    </oval-def:definition>
+  </oval-def:definitions>
+  <oval-def:tests>
+    <ind:family_test id="oval:ssg-test_macos1015_macos_family:tst:1" version="1" check="all" comment="installed OS part of macos family" state_operator="AND">
+      <ind:object object_ref="oval:ssg-obj_macos1015_macos_family:obj:1"/>
+      <ind:state state_ref="oval:ssg-state_macos1015_macos_family:ste:1"/>
+    </ind:family_test>
+    <ind:textfilecontent54_test id="oval:ssg-test_macos1015:tst:1" version="1" check="all" comment="redhat-release is version 8" state_operator="AND">
+      <ind:object object_ref="oval:ssg-obj_macos1015:obj:1"/>
+      <ind:state state_ref="oval:ssg-state_macos1015:ste:1"/>
+    </ind:textfilecontent54_test>
+  </oval-def:tests>
+  <oval-def:objects>
+    <ind:family_object id="oval:ssg-obj_macos1015_macos_family:obj:1" version="1"/>
+    <ind:textfilecontent54_object id="oval:ssg-obj_macos1015:obj:1" version="1">
+      <ind:filepath>/System/Library/CoreServices/SystemVersion.plist</ind:filepath>
+      <ind:pattern operation="pattern match">^.*&lt;string\&gt;(\d+\.\d+).*$</ind:pattern>
+      <ind:instance operation="equals" datatype="int">1</ind:instance>
+    </ind:textfilecontent54_object>
+  </oval-def:objects>
+  <oval-def:states>
+    <ind:family_state id="oval:ssg-state_macos1015_macos_family:ste:1" version="1" operator="AND">
+      <ind:family>macos</ind:family>
+    </ind:family_state>
+    <ind:textfilecontent54_state id="oval:ssg-state_macos1015:ste:1" version="1" operator="AND">
+      <ind:subexpression operation="pattern match">10.15</ind:subexpression>
+    </ind:textfilecontent54_state>
+  </oval-def:states>
+</oval-def:oval_definitions>

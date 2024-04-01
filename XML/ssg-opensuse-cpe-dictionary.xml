@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<cpe-dict:cpe-list xmlns:cpe-dict="http://cpe.mitre.org/dictionary/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cpe.mitre.org/dictionary/2.0 http://cpe.mitre.org/files/cpe-dictionary_2.1.xsd">
+  <cpe-dict:cpe-item name="cpe:/o:opensuse:leap:15.0">
+    <cpe-dict:title xml:lang="en-us">openSUSE Leap 15.0</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-opensuse-cpe-oval.xml">oval:ssg-installed_OS_is_opensuse_leap15:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:opensuse:leap:42.1">
+    <cpe-dict:title xml:lang="en-us">openSUSE Leap 42.1</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-opensuse-cpe-oval.xml">oval:ssg-installed_OS_is_opensuse_leap42:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:opensuse:leap:42.2">
+    <cpe-dict:title xml:lang="en-us">openSUSE Leap 42.2</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-opensuse-cpe-oval.xml">oval:ssg-installed_OS_is_opensuse_leap42:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:opensuse:leap:42.3">
+    <cpe-dict:title xml:lang="en-us">openSUSE Leap 42.3</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-opensuse-cpe-oval.xml">oval:ssg-installed_OS_is_opensuse_leap42:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+</cpe-dict:cpe-list>

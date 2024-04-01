@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<cpe-dict:cpe-list xmlns:cpe-dict="http://cpe.mitre.org/dictionary/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cpe.mitre.org/dictionary/2.0 http://cpe.mitre.org/files/cpe-dictionary_2.1.xsd">
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.0">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.0</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_0:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.1">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.1</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_1:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.10">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.10</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_10:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.2">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.2</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_2:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.3">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.3</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_3:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.4">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.4</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_4:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.5">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.5</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_5:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.6">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.6</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_6:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.7">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.7</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_7:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.8">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.8</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_8:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:redhat:enterprise_linux:8.9">
+    <cpe-dict:title xml:lang="en-us">Red Hat Enterprise Linux 8.9</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-rhel8-cpe-oval.xml">oval:ssg-installed_OS_is_rhel8_9:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+</cpe-dict:cpe-list>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ocil:ocil xmlns:ocil="http://scap.nist.gov/schema/ocil/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <ocil:generator>
+    <ocil:product_name>build_shorthand.py from SCAP Security Guide</ocil:product_name>
+    <ocil:product_version>ssg: 0.1.73</ocil:product_version>
+    <ocil:schema_version>2.0</ocil:schema_version>
+    <ocil:timestamp>2024-03-29T21:00:34</ocil:timestamp>
+  </ocil:generator>
+  <ocil:questionnaires>
+    <ocil:questionnaire id="ocil:ssg-audit_failure_halt_ocil:questionnaire:1">
+      <ocil:title>Shutdown System When Auditing Failures Occur</ocil:title>
+      <ocil:actions>
+        <ocil:test_action_ref>ocil:ssg-audit_failure_halt_action:testaction:1</ocil:test_action_ref>
+      </ocil:actions>
+    </ocil:questionnaire>
+    <ocil:questionnaire id="ocil:ssg-service_com_apple_auditd_enabled_ocil:questionnaire:1">
+      <ocil:title>Enable audit Service</ocil:title>
+      <ocil:actions>
+        <ocil:test_action_ref>ocil:ssg-service_com_apple_auditd_enabled_action:testaction:1</ocil:test_action_ref>
+      </ocil:actions>
+    </ocil:questionnaire>
+  </ocil:questionnaires>
+  <ocil:test_actions>
+    <ocil:boolean_question_test_action id="ocil:ssg-audit_failure_halt_action:testaction:1" question_ref="ocil:ssg-audit_failure_halt_question:question:1">
+      <ocil:when_true>
+        <ocil:result>PASS</ocil:result>
+      </ocil:when_true>
+      <ocil:when_false>
+        <ocil:result>FAIL</ocil:result>
+      </ocil:when_false>
+    </ocil:boolean_question_test_action>
+    <ocil:boolean_question_test_action id="ocil:ssg-service_com_apple_auditd_enabled_action:testaction:1" question_ref="ocil:ssg-service_com_apple_auditd_enabled_question:question:1">
+      <ocil:when_true>
+        <ocil:result>PASS</ocil:result>
+      </ocil:when_true>
+      <ocil:when_false>
+        <ocil:result>FAIL</ocil:result>
+      </ocil:when_false>
+    </ocil:boolean_question_test_action>
+  </ocil:test_actions>
+  <ocil:questions>
+    <ocil:boolean_question id="ocil:ssg-audit_failure_halt_question:question:1">
+      <ocil:question_text>To verify that auditing is enabled and running, run the
+following command:
+$ sudo grep -E "^policy.*ahlt" /etc/security/audit_control
+The output should contain ahlt
+      Is it the case that auditing is not configured to shut down on audit failure?
+      </ocil:question_text>
+    </ocil:boolean_question>
+    <ocil:boolean_question id="ocil:ssg-service_com_apple_auditd_enabled_question:question:1">
+      <ocil:question_text>To verify that auditing is enabled and running, run the
+following command:
+$ sudo launchctl list com.apple.auditd
+The output should return process information for
+com.apple.auditd
+      Is it the case that auditing is not enabled or running?
+      </ocil:question_text>
+    </ocil:boolean_question>
+  </ocil:questions>
+</ocil:ocil>

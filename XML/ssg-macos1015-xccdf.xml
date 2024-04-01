@@ -1,0 +1,637 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xccdf-1.2:Benchmark xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xccdf-1.2="http://checklists.nist.gov/xccdf/1.2" id="xccdf_org.ssgproject.content_benchmark_macOS-1015" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 xccdf-1.2.xsd" style="SCAP_1.2" resolved="true" xml:lang="en-US">
+  <xccdf-1.2:status date="2024-03-29">draft</xccdf-1.2:status>
+  <xccdf-1.2:title>Guide to the Secure Configuration of Apple macOS 10.15</xccdf-1.2:title>
+  <xccdf-1.2:description>This guide presents a catalog of security-relevant
+configuration settings for Apple macOS 10.15. It is a rendering of
+content structured in the eXtensible Configuration Checklist Description Format (XCCDF)
+in order to support security automation.
+<html:br />
+    <html:br />
+Providing system administrators with such guidance informs them how to securely
+configure systems under their control in a variety of network roles. Policy
+makers and baseline creators can use this catalog of settings, with its
+associated references to higher-level security control catalogs, in order to
+assist them in security baseline creation. This guide is a <html:em>catalog, not a
+checklist</html:em>, and satisfaction of every item is not likely to be possible or
+sensible in many operational scenarios. However, the XCCDF format enables
+granular selection and adjustment of settings, and their association with OVAL
+and OCIL content provides an automated checking capability. Transformations of
+this document, and its associated automated checking content, are capable of
+providing baselines that meet a diverse set of policy objectives. Some example
+XCCDF <html:em>Profiles</html:em>, which are selections of items that form checklists and
+can be used as baselines, are available with this guide. They can be
+processed, in an automated fashion, with tools that support the Security
+Content Automation Protocol (SCAP). The DISA STIG, which provides required
+settings for US Department of Defense systems, is one example of a baseline
+created from this guidance.
+</xccdf-1.2:description>
+  <xccdf-1.2:notice id="terms_of_use">Do not attempt to implement any of the settings in
+this guide without first testing them in a non-operational environment. The
+creators of this guidance assume no responsibility whatsoever for its use by
+other parties, and makes no guarantees, expressed or implied, about its
+quality, reliability, or any other characteristic.
+</xccdf-1.2:notice>
+  <xccdf-1.2:front-matter>The Compliance As Code Project<html:br />
+    <html:a href="https://github.com/ComplianceAsCode/content">https://github.com/ComplianceAsCode/content</html:a>
+  </xccdf-1.2:front-matter>
+  <xccdf-1.2:rear-matter>Apple, iPadOS, tvOS, watchOS, macOS and OS X are either registered
+trademarks or trademarks of Apple, Inc. in the United States and other
+countries. All other names are registered trademarks or trademarks of their
+respective companies.</xccdf-1.2:rear-matter>
+  <xccdf-1.2:reference href="https://cyber.gouv.fr/sites/default/files/document/linux_configuration-en-v2.pdf">anssi</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=application-servers">app-srg</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=container-platform">app-srg-ctr</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Grundschutz/International/bsi_it_gs_comp_2022.pdf">bsi</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.cisecurity.org/controls/">cis-csc</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.fbi.gov/file-repository/cjis-security-policy-v5_5_20160601-2-1.pdf">cjis</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.isaca.org/resources/cobit">cobit5</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf">cui</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="not_officially_available">dcid</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">disa</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.gpo.gov/fdsys/pkg/CFR-2007-title45-vol1/pdf/CFR-2007-title45-vol1-chapA-subchapC.pdf">hipaa</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.isa.org/products/isa-62443-2-1-2009-security-for-industrial-automat">isa-62443-2009</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.isa.org/products/ansi-isa-62443-3-3-99-03-03-2013-security-for-indu">isa-62443-2013</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.cyber.gov.au/acsc/view-all-content/ism">ism</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.iso.org/contents/data/standard/05/45/54534.html">iso27001-2013</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.nerc.com/pa/Stand/Standard%20Purpose%20Statement%20DL/US_Standard_One-Stop-Shop.xlsx">nerc-cip</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">nist</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.04162018.pdf">nist-csf</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">os-srg</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.niap-ccevs.org/Profile/PP.cfm">ospp</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf">pcidss</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0.pdf">pcidss4</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cunix-linux">stigid</xccdf-1.2:reference>
+  <xccdf-1.2:reference href="https://public.cyber.mil/stigs/srg-stig-tools/">stigref</xccdf-1.2:reference>
+  <xccdf-1.2:platform idref="cpe:/o:apple:macos:10.15" />
+  <xccdf-1.2:version update="https://github.com/ComplianceAsCode/content/releases/latest">0.1.73</xccdf-1.2:version>
+  <xccdf-1.2:metadata>
+    <dc:publisher>SCAP Security Guide Project</dc:publisher>
+    <dc:creator>SCAP Security Guide Project</dc:creator>
+    <dc:contributor>Frank J Cameron (CAM1244) &lt;cameron@ctc.com&gt;</dc:contributor>
+    <dc:contributor>0x66656c6978 &lt;0x66656c6978@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Håvard F. Aasen &lt;havard.f.aasen@pfft.no&gt;</dc:contributor>
+    <dc:contributor>Jack Adolph &lt;jack.adolph@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Edgar Aguilar &lt;edgar.aguilar@oracle.com&gt;</dc:contributor>
+    <dc:contributor>akuster &lt;akuster808@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Gabe Alford &lt;redhatrises@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Firas AlShafei &lt;firas.alshafei@us.abb.com&gt;</dc:contributor>
+    <dc:contributor>Rodrigo Alvares &lt;ralvares@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Christopher Anderson &lt;cba@fedoraproject.org&gt;</dc:contributor>
+    <dc:contributor>Craig Andrews &lt;candrews@integralblue.com&gt;</dc:contributor>
+    <dc:contributor>angystardust &lt;angystardust@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>anivan-suse &lt;anastasija.ivanovic@suse.com&gt;</dc:contributor>
+    <dc:contributor>anixon-rh &lt;55244503+anixon-rh@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Stephen L Arnold &lt;sarnold@vctlabs.com&gt;</dc:contributor>
+    <dc:contributor>Ikko Ashimine &lt;eltociear@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Chuck Atkins &lt;chuck.atkins@kitware.com&gt;</dc:contributor>
+    <dc:contributor>Bharath B &lt;bhb@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Ryan Ballanger &lt;root@rballang-admin-2.fastenal.com&gt;</dc:contributor>
+    <dc:contributor>Alex Baranowski &lt;alex@euro-linux.com&gt;</dc:contributor>
+    <dc:contributor>Eduardo Barretto &lt;eduardo.barretto@canonical.com&gt;</dc:contributor>
+    <dc:contributor>Molly Jo Bault &lt;Molly.Jo.Bault@ballardtech.com&gt;</dc:contributor>
+    <dc:contributor>Andrew Becker &lt;A-Beck@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Gabriel Becker &lt;ggasparb@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Alexander Bergmann &lt;abergmann@suse.com&gt;</dc:contributor>
+    <dc:contributor>Dale Bewley &lt;dale@bewley.net&gt;</dc:contributor>
+    <dc:contributor>Jose Luis BG &lt;bgjoseluis@gmail.com&gt;</dc:contributor>
+    <dc:contributor>binyanling &lt;binyanling@uniontech.com&gt;</dc:contributor>
+    <dc:contributor>Joseph Bisch &lt;joseph.bisch@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Jeff Blank &lt;blank@eclipse.ncsc.mil&gt;</dc:contributor>
+    <dc:contributor>Olivier Bonhomme &lt;ptitoliv@ptitoliv.net&gt;</dc:contributor>
+    <dc:contributor>Lance Bragstad &lt;lbragstad@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Ted Brunell &lt;tbrunell@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Marcus Burghardt &lt;maburgha@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Matthew Burket &lt;mburket@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Blake Burkhart &lt;blake.burkhart@us.af.mil&gt;</dc:contributor>
+    <dc:contributor>Patrick Callahan &lt;pmc@patrickcallahan.com&gt;</dc:contributor>
+    <dc:contributor>George Campbell &lt;gcampbell@palantir.com&gt;</dc:contributor>
+    <dc:contributor>Nick Carboni &lt;ncarboni@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Carlos &lt;64919342+carlosmmatos@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>James Cassell &lt;james.cassell@ll.mit.edu&gt;</dc:contributor>
+    <dc:contributor>Frank Caviggia &lt;fcaviggia@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Eric Christensen &lt;echriste@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Dan Clark &lt;danclark@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Jayson Cofell &lt;1051437+70k10@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>David du Colombier &lt;djc@datadoghq.com&gt;</dc:contributor>
+    <dc:contributor>Commandcracker &lt;lukas.fricke.dev@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Caleb Cooper &lt;coopercd@ornl.gov&gt;</dc:contributor>
+    <dc:contributor>cortesana &lt;acortes@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Richard Maciel Costa &lt;richard.maciel.costa@canonical.com&gt;</dc:contributor>
+    <dc:contributor>Xavier Coulon &lt;xavier.coulon@suse.com&gt;</dc:contributor>
+    <dc:contributor>Deric Crago &lt;deric.crago@gmail.com&gt;</dc:contributor>
+    <dc:contributor>crleekwc &lt;crleekwc@gmail.com&gt;</dc:contributor>
+    <dc:contributor>cueball23 &lt;christoph.alms@westnetz.de&gt;</dc:contributor>
+    <dc:contributor>cyarbrough76 &lt;42849651+cyarbrough76@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Maura Dailey &lt;maura@eclipse.ncsc.mil&gt;</dc:contributor>
+    <dc:contributor>Klaas Demter &lt;demter@atix.de&gt;</dc:contributor>
+    <dc:contributor>denknorr &lt;dennis.knorr@suse.com&gt;</dc:contributor>
+    <dc:contributor>dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>dhanushkar-wso2 &lt;dhanushkar@wso2.com&gt;</dc:contributor>
+    <dc:contributor>Andrew DiPrinzio &lt;andrew.diprinzio@jhuapl.edu&gt;</dc:contributor>
+    <dc:contributor>dom &lt;dominique.blaze@devinci.fr&gt;</dc:contributor>
+    <dc:contributor>Jean-Baptiste Donnette &lt;jean-baptiste.donnette@epita.fr&gt;</dc:contributor>
+    <dc:contributor>Marco De Donno &lt;mdedonno1337@gmail.com&gt;</dc:contributor>
+    <dc:contributor>dperrone &lt;dperrone@redhat.com&gt;</dc:contributor>
+    <dc:contributor>drax &lt;applezip@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Sebastian Dunne &lt;sdunne@redhat.com&gt;</dc:contributor>
+    <dc:contributor>François Duthilleul &lt;francoisduthilleul@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Greg Elin &lt;gregelin@gitmachines.com&gt;</dc:contributor>
+    <dc:contributor>eradot4027 &lt;jrtonmac@gmail.com&gt;</dc:contributor>
+    <dc:contributor>ermeratos &lt;manuel.ermer@atos.net&gt;</dc:contributor>
+    <dc:contributor>Alexis Facques &lt;alexis.facques@mythalesgroup.io&gt;</dc:contributor>
+    <dc:contributor>Henry Finucane &lt;hfinucane@zscaler.com&gt;</dc:contributor>
+    <dc:contributor>Leah Fisher &lt;lfisher047@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Yavor Georgiev &lt;strandjata@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Alijohn Ghassemlouei &lt;alijohn@secureagc.com&gt;</dc:contributor>
+    <dc:contributor>Swarup Ghosh &lt;swghosh@redhat.com&gt;</dc:contributor>
+    <dc:contributor>ghylock &lt;ghylock@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Andrew Gilmore &lt;agilmore2@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Joshua Glemza &lt;jglemza@nasa.gov&gt;</dc:contributor>
+    <dc:contributor>Nick Gompper &lt;forestgomp@yahoo.com&gt;</dc:contributor>
+    <dc:contributor>David Fernandez Gonzalez &lt;david.fernandezgonzalez@canonical.com&gt;</dc:contributor>
+    <dc:contributor>Loren Gordon &lt;lorengordon@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Gene Gotimer &lt;otherdevopsgene@portinfo.com&gt;</dc:contributor>
+    <dc:contributor>Patrik Greco &lt;sikevux@sikevux.se&gt;</dc:contributor>
+    <dc:contributor>Steve Grubb &lt;sgrubb@redhat.com&gt;</dc:contributor>
+    <dc:contributor>guangyee &lt;gyee@suse.com&gt;</dc:contributor>
+    <dc:contributor>Christian Hagenest &lt;christian.hagenest@suse.com&gt;</dc:contributor>
+    <dc:contributor>Marek Haicman &lt;mhaicman@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Vern Hart &lt;vern.hart@canonical.com&gt;</dc:contributor>
+    <dc:contributor>Alex Haydock &lt;alex@alexhaydock.co.uk&gt;</dc:contributor>
+    <dc:contributor>Rebekah Hayes &lt;rhayes@corp.rivierautilities.com&gt;</dc:contributor>
+    <dc:contributor>Trey Henefield &lt;thenefield@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Henning Henkel &lt;henning.henkel@helvetia.ch&gt;</dc:contributor>
+    <dc:contributor>hex2a &lt;hex2a@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>John Hooks &lt;jhooks@starscream.pa.jhbcomputers.com&gt;</dc:contributor>
+    <dc:contributor>Jakub Hrozek &lt;jhrozek@redhat.com&gt;</dc:contributor>
+    <dc:contributor>De Huo &lt;De.Huo@windriver.com&gt;</dc:contributor>
+    <dc:contributor>Robin Price II &lt;robin@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Yasir Imam &lt;yimam@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Jiri Jaburek &lt;jjaburek@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Keith Jackson &lt;keithkjackson@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Marc Jadoul &lt;mgjadoul@laptomatic.auth-o-matic.corp&gt;</dc:contributor>
+    <dc:contributor>Jeremiah Jahn &lt;jeremiah@goodinassociates.com&gt;</dc:contributor>
+    <dc:contributor>Jakub Jelen &lt;jjelen@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Jessicahfy &lt;Jessicahfy@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Stephan Joerrens &lt;Stephan.Joerrens@fiduciagad.de&gt;</dc:contributor>
+    <dc:contributor>Hunter Jones &lt;hjones2199@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Jono &lt;jono@ubuntu-18.localdomain&gt;</dc:contributor>
+    <dc:contributor>justchris1 &lt;justchris1@justchris1.email&gt;</dc:contributor>
+    <dc:contributor>Kacper &lt;kacper@kacper.se&gt;</dc:contributor>
+    <dc:contributor>Kai Kang &lt;kai.kang@windriver.com&gt;</dc:contributor>
+    <dc:contributor>Charles Kernstock &lt;charles.kernstock@ultra-ats.com&gt;</dc:contributor>
+    <dc:contributor>Yuli Khodorkovskiy &lt;ykhodorkovskiy@tresys.com&gt;</dc:contributor>
+    <dc:contributor>Sherine Khoury &lt;skhoury@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Nathan Kinder &lt;nkinder@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Lee Kinser &lt;lee.kinser@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Evgeny Kolesnikov &lt;ekolesni@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Peter 'Pessoft' Kolínek &lt;github@pessoft.com&gt;</dc:contributor>
+    <dc:contributor>Luke Kordell &lt;luke.t.kordell@lmco.com&gt;</dc:contributor>
+    <dc:contributor>Malte Kraus &lt;malte.kraus@suse.com&gt;</dc:contributor>
+    <dc:contributor>Seth Kress &lt;seth.kress@dsainc.com&gt;</dc:contributor>
+    <dc:contributor>Felix Krohn &lt;felix.krohn@helvetia.ch&gt;</dc:contributor>
+    <dc:contributor>kspargur &lt;kspargur@kspargur.csb&gt;</dc:contributor>
+    <dc:contributor>Amit Kumar &lt;amitkuma@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Fen Labalme &lt;fen@civicactions.com&gt;</dc:contributor>
+    <dc:contributor>Dexter Le &lt;dexter.le@sap.com&gt;</dc:contributor>
+    <dc:contributor>Ade Lee &lt;alee@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Christopher Lee &lt;Crleekwc@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Ian Lee &lt;lee1001@llnl.gov&gt;</dc:contributor>
+    <dc:contributor>Jarrett Lee &lt;jarrettl@umd.edu&gt;</dc:contributor>
+    <dc:contributor>Joseph Lenox &lt;joseph.lenox@collins.com&gt;</dc:contributor>
+    <dc:contributor>Jan Lieskovsky &lt;jlieskov@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Markus Linnala &lt;Markus.Linnala@knowit.fi&gt;</dc:contributor>
+    <dc:contributor>Flos Lonicerae &lt;lonicerae@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Simon Lukasik &lt;slukasik@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Milan Lysonek &lt;mlysonek@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Fredrik Lysén &lt;fredrik@pipemore.se&gt;</dc:contributor>
+    <dc:contributor>Mackemania &lt;8738793+Mackemania@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Caitlin Macleod &lt;caitelatte@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Nick Maludy &lt;nmaludy@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Lokesh Mandvekar &lt;lsm5@fedoraproject.org&gt;</dc:contributor>
+    <dc:contributor>Matus Marhefka &lt;mmarhefk@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Jamie Lorwey Martin &lt;jlmartin@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Carlos Matos &lt;cmatos@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Robert McAllister &lt;rmcallis@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Karen McCarron &lt;kmccarro@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Michael McConachie &lt;michael@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Marcus Meissner &lt;meissner@suse.de&gt;</dc:contributor>
+    <dc:contributor>Khary Mendez &lt;kmendez@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Rodney Mercer &lt;rmercer@harris.com&gt;</dc:contributor>
+    <dc:contributor>Matt Micene &lt;nzwulfin@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Brian Millett &lt;bmillett@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Takuya Mishina &lt;tmishina@jp.ibm.com&gt;</dc:contributor>
+    <dc:contributor>Mixer9 &lt;35545791+Mixer9@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>mmosel &lt;mmosel@kde.example.com&gt;</dc:contributor>
+    <dc:contributor>Thomas Montague &lt;montague.thomas@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Zbynek Moravec &lt;zmoravec@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Kazuo Moriwaka &lt;moriwaka@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Michael Moseley &lt;michael@eclipse.ncsc.mil&gt;</dc:contributor>
+    <dc:contributor>Renaud Métrich &lt;rmetrich@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Joe Nall &lt;joe@nall.com&gt;</dc:contributor>
+    <dc:contributor>Neiloy &lt;neiloy@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Axel Nennker &lt;axel@nennker.de&gt;</dc:contributor>
+    <dc:contributor>Michele Newman &lt;mnewman@redhat.com&gt;</dc:contributor>
+    <dc:contributor>nnerdmann &lt;128606223+nnerdmann@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Sean O'Keeffe &lt;seanokeeffe797@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Jiri Odehnal &lt;jodehnal@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Ilya Okomin &lt;ilya.okomin@oracle.com&gt;</dc:contributor>
+    <dc:contributor>Kaustubh Padegaonkar &lt;theTuxRacer@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Michael Palmiotto &lt;mpalmiotto@tresys.com&gt;</dc:contributor>
+    <dc:contributor>Eryx Paredes &lt;eryxp@lyft.com&gt;</dc:contributor>
+    <dc:contributor>Max R.D. Parmer &lt;maxp@trystero.is&gt;</dc:contributor>
+    <dc:contributor>Arnaud Patard &lt;apatard@hupstream.com&gt;</dc:contributor>
+    <dc:contributor>Jan Pazdziora &lt;jpazdziora@redhat.com&gt;</dc:contributor>
+    <dc:contributor>pcactr &lt;paul.c.arnold4.ctr@mail.mil&gt;</dc:contributor>
+    <dc:contributor>Kenneth Peeples &lt;kennethwpeeples@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Nathan Peters &lt;Nathaniel.Peters@ca.com&gt;</dc:contributor>
+    <dc:contributor>Frank Lin PIAT &lt;fpiat@klabs.be&gt;</dc:contributor>
+    <dc:contributor>Stefan Pietsch &lt;mail.ipv4v6+gh@gmail.com&gt;</dc:contributor>
+    <dc:contributor>piggyvenus &lt;piggyvenus@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Vojtech Polasek &lt;vpolasek@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Orion Poplawski &lt;orion@nwra.com&gt;</dc:contributor>
+    <dc:contributor>Jennifer Power &lt;barnabei.jennifer@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Nick Poyant &lt;npoyant@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Martin Preisler &lt;mpreisle@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Wesley Ceraso Prudencio &lt;wcerasop@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Raphael Sanchez Prudencio &lt;rsprudencio@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Miha Purg &lt;miha.purg@canonical.com&gt;</dc:contributor>
+    <dc:contributor>T.O. Radzy Radzykewycz &lt;radzy@windriver.com&gt;</dc:contributor>
+    <dc:contributor>rain-Qing &lt;yangyuqing6@qq.com&gt;</dc:contributor>
+    <dc:contributor>Kenyon Ralph &lt;kenyon@kenyonralph.com&gt;</dc:contributor>
+    <dc:contributor>Mike Ralph &lt;mralph@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Federico Ramirez &lt;federico.r.ramirez@oracle.com&gt;</dc:contributor>
+    <dc:contributor>rchikov &lt;rumen.chikov@suse.com&gt;</dc:contributor>
+    <dc:contributor>Rick Renshaw &lt;Richard_Renshaw@xtoenergy.com&gt;</dc:contributor>
+    <dc:contributor>Paul Rensing &lt;prensing@cimetrics.com&gt;</dc:contributor>
+    <dc:contributor>Chris Reynolds &lt;c.reynolds82@gmail.com&gt;</dc:contributor>
+    <dc:contributor>rhayes &lt;rhayes@rivierautilities.com&gt;</dc:contributor>
+    <dc:contributor>Pat Riehecky &lt;riehecky@fnal.gov&gt;</dc:contributor>
+    <dc:contributor>rlucente-se-jboss &lt;rlucente@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Juan Antonio Osorio Robles &lt;juan.osoriorobles@eu.equinix.com&gt;</dc:contributor>
+    <dc:contributor>Paul Roche &lt;paul.roche@menlosecurity.com&gt;</dc:contributor>
+    <dc:contributor>Jan Rodak &lt;hony.com@seznam.cz&gt;</dc:contributor>
+    <dc:contributor>Matt Rogers &lt;mrogers@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Jesse Roland &lt;jesse.roland@onyxpoint.com&gt;</dc:contributor>
+    <dc:contributor>Joshua Roys &lt;roysjosh@gmail.com&gt;</dc:contributor>
+    <dc:contributor>rrenshaw &lt;bofh69@yahoo.com&gt;</dc:contributor>
+    <dc:contributor>Chris Ruffalo &lt;chris.ruffalo@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Benjamin Ruland &lt;benjamin.ruland@gmail.com&gt;</dc:contributor>
+    <dc:contributor>rumch-se &lt;77793453+rumch-se@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Rutvik &lt;32413084+rutvik23@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>rutvik23 &lt;rutksh@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Ray Shaw (Cont ARL/CISD) rvshaw &lt;rvshaw@esme.arl.army.mil&gt;</dc:contributor>
+    <dc:contributor>Earl Sampson &lt;ESampson@suse.com&gt;</dc:contributor>
+    <dc:contributor>sampsone &lt;esampson@suse.com&gt;</dc:contributor>
+    <dc:contributor>Willy Santos &lt;wsantos@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Nagarjuna Sarvepalli &lt;snagarju@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Anderson Sasaki &lt;33833274+ansasaki@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Gautam Satish &lt;gautams@hpe.com&gt;</dc:contributor>
+    <dc:contributor>Watson Sato &lt;wsato@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Satoru SATOH &lt;satoru.satoh@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Alexander Scheel &lt;alexander.m.scheel@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Bryan Schneiders &lt;pschneiders@trisept.com&gt;</dc:contributor>
+    <dc:contributor>Robert Schweikert &lt;rjschwei@suse.com&gt;</dc:contributor>
+    <dc:contributor>shaneboulden &lt;shane.boulden@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Vincent Shen &lt;wenshen@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Dhriti Shikhar &lt;dhriti.shikhar.rokz@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Spencer Shimko &lt;sshimko@tresys.com&gt;</dc:contributor>
+    <dc:contributor>Mark Shoger &lt;mshoger@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Shane Siebken &lt;shane.siebken@capellaspace.com&gt;</dc:contributor>
+    <dc:contributor>THOBY Simon &lt;Simon.THOBY@viveris.fr&gt;</dc:contributor>
+    <dc:contributor>Thomas Sjögren &lt;konstruktoid@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Jindrich Skacel &lt;102800748+jskacel@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Alexandre Skrzyniarz &lt;alexandre.skrzyniarz@laposte.net&gt;</dc:contributor>
+    <dc:contributor>Francisco Slavin &lt;fslavin@tresys.com&gt;</dc:contributor>
+    <dc:contributor>sluetze &lt;13255307+sluetze@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Dave Smith &lt;dsmith@eclipse.ncsc.mil&gt;</dc:contributor>
+    <dc:contributor>David Smith &lt;dsmith@fornax.eclipse.ncsc.mil&gt;</dc:contributor>
+    <dc:contributor>Kevin Spargur &lt;kspargur@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Kenneth Stailey &lt;kstailey.lists@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Leland Steinke &lt;leland.j.steinke.ctr@mail.mil&gt;</dc:contributor>
+    <dc:contributor>Justin Stephenson &lt;jstephen@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Brian Stinson &lt;brian@bstinson.com&gt;</dc:contributor>
+    <dc:contributor>Jake Stookey &lt;jakestookey@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Jonathan Sturges &lt;jsturges@redhat.com&gt;</dc:contributor>
+    <dc:contributor>svet-se &lt;svetlin.boychev@suse.com&gt;</dc:contributor>
+    <dc:contributor>teacup-on-rockingchair &lt;315160+teacup-on-rockingchair@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Ian Tewksbury &lt;itewk@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Philippe Thierry &lt;phil@reseau-libre.net&gt;</dc:contributor>
+    <dc:contributor>Simon THOBY &lt;git@nightmared.fr&gt;</dc:contributor>
+    <dc:contributor>Derek Thurston &lt;thegrit@gmail.com&gt;</dc:contributor>
+    <dc:contributor>tianzhenjia &lt;jiatianzhen@cmss.chinamobile.com&gt;</dc:contributor>
+    <dc:contributor>Greg Tinsley &lt;gtinsley@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Paul Tittle &lt;ptittle@cmf.nrl.navy.mil&gt;</dc:contributor>
+    <dc:contributor>tom &lt;tom@localhost.localdomain&gt;</dc:contributor>
+    <dc:contributor>tomas.hudik &lt;tomas.hudik@embedit.cz&gt;</dc:contributor>
+    <dc:contributor>Jeb Trayer &lt;jeb.d.trayer@uscg.mil&gt;</dc:contributor>
+    <dc:contributor>TrilokGeer &lt;tgeer@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Viktors Trubovics &lt;viktors.trubovics@suse.com&gt;</dc:contributor>
+    <dc:contributor>Nico Truzzolino &lt;nico.truzzolino@gmx.de&gt;</dc:contributor>
+    <dc:contributor>Brian Turek &lt;brian.turek@gmail.com&gt;</dc:contributor>
+    <dc:contributor>Matěj Týč &lt;matyc@redhat.com&gt;</dc:contributor>
+    <dc:contributor>VadimDor &lt;29509093+VadimDor@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Trevor Vaughan &lt;tvaughan@onyxpoint.com&gt;</dc:contributor>
+    <dc:contributor>vtrubovics &lt;82443408+vtrubovics@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Samuel Warren &lt;swarren@redhat.com&gt;</dc:contributor>
+    <dc:contributor>wcushen &lt;54533890+wcushen@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Shawn Wells &lt;shawn@shawndwells.io&gt;</dc:contributor>
+    <dc:contributor>Whidix &lt;31294015+Whidix@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Daniel E. White &lt;linuxdan@users.noreply.github.com&gt;</dc:contributor>
+    <dc:contributor>Bernhard M. Wiedemann &lt;bwiedemann@suse.de&gt;</dc:contributor>
+    <dc:contributor>Roy Williams &lt;roywilli@roywilli.redhat.com&gt;</dc:contributor>
+    <dc:contributor>Willumpie &lt;willumpie@xs4all.nl&gt;</dc:contributor>
+    <dc:contributor>Rob Wilmoth &lt;rwilmoth@redhat.com&gt;</dc:contributor>
+    <dc:contributor>win97pro &lt;win97pro@protonmail.com&gt;</dc:contributor>
+    <dc:contributor>Lucas Yamanishi &lt;lucas.yamanishi@onyxpoint.com&gt;</dc:contributor>
+    <dc:contributor>Xirui Yang &lt;xirui.yang@oracle.com&gt;</dc:contributor>
+    <dc:contributor>yarunachalam &lt;yarunachalam@suse.com&gt;</dc:contributor>
+    <dc:contributor>Guang Yee &lt;guang.yee@suse.com&gt;</dc:contributor>
+    <dc:contributor>Achilleas John Yfantis &lt;ayfantis@redhat.com&gt;</dc:contributor>
+    <dc:contributor>YiLin.Li &lt;YiLin.Li@linux.alibaba.com&gt;</dc:contributor>
+    <dc:contributor>YuQing &lt;yyq0391@163.com&gt;</dc:contributor>
+    <dc:contributor>Kevin Zimmerman &lt;kevin.zimmerman@kitware.com&gt;</dc:contributor>
+    <dc:contributor>Luigi Mario Zuccarelli &lt;luzuccar@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Jan Černý &lt;jcerny@redhat.com&gt;</dc:contributor>
+    <dc:contributor>Michal Šrubař &lt;msrubar@redhat.com&gt;</dc:contributor>
+    <dc:source>https://github.com/ComplianceAsCode/content/releases/latest</dc:source>
+  </xccdf-1.2:metadata>
+  <xccdf-1.2:Profile id="xccdf_org.ssgproject.content_profile_moderate">
+    <xccdf-1.2:title override="true">NIST 800-53 Moderate-Impact Baseline for Apple macOS 10.15 Catalina</xccdf-1.2:title>
+    <xccdf-1.2:description override="true">This compliance profile reflects the core set of Moderate-Impact Baseline
+configuration settings for deployment of Apple macOS 10.15 Catalina
+into U.S. Defense, Intelligence, and Civilian agencies.
+Development partners and sponsors include the U.S. National Institute
+of Standards and Technology (NIST), U.S. Department of Defense, and the
+the National Security Agency.
+
+This baseline implements configuration requirements from the following
+sources:
+
+- NIST 800-53 control selections for Moderate-Impact systems (NIST 800-53)
+
+For any differing configuration requirements, e.g. password lengths, the stricter
+security setting was chosen. Security Requirement Traceability Guides (RTMs) and
+sample System Security Configuration Guides are provided via the
+scap-security-guide-docs package.
+
+This profile reflects U.S. Government consensus content and is developed through
+the ComplianceAsCode initiative, championed by the National
+Security Agency. Except for differences in formatting to accommodate
+publishing processes, this profile mirrors ComplianceAsCode
+content as minor divergences, such as bugfixes, work through the
+consensus and release processes.</xccdf-1.2:description>
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_rule_audit_failure_halt" selected="true" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_rule_service_com_apple_auditd_enabled" selected="true" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_general-principles" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_how-to-use" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_intro" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_intro-formatting-conventions" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_intro-read-sections-completely" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_intro-reboot-required" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_intro-root-shell-assumed" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_intro-test-non-production" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_principle-encrypt-transmitted-data" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_principle-least-privilege" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_principle-minimize-software" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_principle-separate-servers" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_principle-use-security-tools" selected="false" />
+    <xccdf-1.2:select idref="xccdf_org.ssgproject.content_group_services" selected="false" />
+  </xccdf-1.2:Profile>
+  <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_services">
+    <xccdf-1.2:title>Services</xccdf-1.2:title>
+    <xccdf-1.2:description>The best protection against vulnerable software is running less software. This section describes how to review
+the software which Apple macOS 10.15 installs on a system and disable software which is not needed. It
+then enumerates the software packages installed on a default Apple macOS 10.15 system and provides guidance about which
+ones can be safely disabled.
+<html:br />
+      <html:br />
+Apple macOS 10.15 provides a convenient minimal install option that essentially installs the bare necessities for a functional
+system. When building Apple macOS 10.15 systems, it is highly recommended to select the minimal packages and then build up
+the system from there.</xccdf-1.2:description>
+  </xccdf-1.2:Group>
+  <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_auditing">
+    <xccdf-1.2:title>System Accounting with audit</xccdf-1.2:title>
+    <xccdf-1.2:description>The Basic Security Module (BSM) security audit API and file format is Apple's
+auditing system. The audit() function submits a record to the kernel for inclusion in the
+global audit trail. The record must already be in BSM format. To protect
+the integrity of the audit trail, this system call must be made with sufficient
+privileges. Libbsm can be used to create and manipulate BSM data. Length
+is the length in bytes of the BSM record and record points to the data.
+The audit service provides substantial capabilities for recording system
+activities. Secure networks often have substantial auditing
+requirements, and <html:code>auditd</html:code> can be configured to meet these
+requirements.</xccdf-1.2:description>
+    <xccdf-1.2:Rule selected="false" id="xccdf_org.ssgproject.content_rule_service_com_apple_auditd_enabled" severity="high">
+      <xccdf-1.2:title>Enable audit Service</xccdf-1.2:title>
+      <xccdf-1.2:description>The <html:code>audit</html:code> service is an essential userspace component of
+the auditing system, as it is responsible for writing audit records to
+disk.</xccdf-1.2:description>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-000130</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-000131</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-000132</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-000133</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-000134</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-000135</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-000159</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-001464</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-001487</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-001889</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-001890</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-001914</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-002130</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">AU-3</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">AU-3(1)</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">AU-8(a)</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">AU-8(b)</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">AU-12(3)</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">AU-14(1)</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000037-GPOS-00015</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000038-GPOS-00016</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000039-GPOS-00017</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000040-GPOS-00018</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000041-GPOS-00019</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000042-GPOS-00020</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000042-GPOS-00021</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000055-GPOS-00026</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000254-GPOS-00095</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000255-GPOS-00096</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000303-GPOS-00120</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000337-GPOS-00129</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000358-GPOS-00145</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000359-GPOS-00146</xccdf-1.2:reference>
+      <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cunix-linux">AOSX-14-001013</xccdf-1.2:reference>
+      <xccdf-1.2:rationale>Without establishing what type of events occurred, when they
+occurred, and by whom, it would be difficult to establish, correlate,
+and investigate the events leading up to an outage or attack.
+<html:br />
+        <html:br />
+Audit record content that may be necessary to satisfy this requirement
+includes, for example, time stamps, source and destination addresses,
+user/process identifiers, event descriptions, success/fail indications,
+filenames involved, and access control or flow control rules invoked.
+<html:br />
+        <html:br />
+Associating event types with detected events in the operating system
+audit logs provides a means of investigating an attack, recognizing
+resource utilization or capacity thresholds, or identifying an
+improperly configured operating system.  </xccdf-1.2:rationale>
+      <xccdf-1.2:fix system="urn:xccdf:fix:script:sh" id="service_com_apple_auditd_enabled" complexity="low" disruption="low" reboot="false" strategy="enable">
+launchctl load -w /System/Library/LaunchDaemons/com.apple.auditd.plist
+</xccdf-1.2:fix>
+      <xccdf-1.2:check system="http://scap.nist.gov/schema/ocil/2">
+        <xccdf-1.2:check-content-ref href="ssg-macos1015-ocil.xml" name="ocil:ssg-service_com_apple_auditd_enabled_ocil:questionnaire:1" />
+      </xccdf-1.2:check>
+    </xccdf-1.2:Rule>
+    <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_configure_auditing">
+      <xccdf-1.2:title>Configure auditd</xccdf-1.2:title>
+      <xccdf-1.2:description>The <html:code>auditd</html:code> program can perform comprehensive
+monitoring of system activity. This section describes recommended
+configuration settings for comprehensive auditing, but a full
+description of the auditing system's capabilities is beyond the
+scope of this guide.</xccdf-1.2:description>
+      <xccdf-1.2:Rule selected="false" id="xccdf_org.ssgproject.content_rule_audit_failure_halt" severity="medium">
+        <xccdf-1.2:title>Shutdown System When Auditing Failures Occur</xccdf-1.2:title>
+        <xccdf-1.2:description>The macOS system must shut down by default upon audit
+failure unless availability is an overriding concern.</xccdf-1.2:description>
+        <xccdf-1.2:reference href="https://public.cyber.mil/stigs/cci/">CCI-000140</xccdf-1.2:reference>
+        <xccdf-1.2:reference href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">AU-5(b)</xccdf-1.2:reference>
+        <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cgeneral-purpose-os">SRG-OS-000047-GPOS-00023</xccdf-1.2:reference>
+        <xccdf-1.2:reference href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=operating-systems%2Cunix-linux">AOSX-14-001010</xccdf-1.2:reference>
+        <xccdf-1.2:rationale>The audit service should shut down the computer if it 
+is unable to audit system events. Once audit failure
+occurs, user and system activity is no longer recorded
+and malicious activity could go undetected. Audit
+processing failures include software/hardware errors,
+failures in the audit capturing mechanisms, and audit
+storage capacity being reached or exceeded. Responses
+to audit failure depend on the nature of the failure
+mode.</xccdf-1.2:rationale>
+        <xccdf-1.2:fix system="urn:xccdf:fix:script:sh" id="audit_failure_halt" complexity="low" disruption="low" reboot="false" strategy="enable">
+/usr/bin/sed -i.bak '/^policy/ s/$/,ahlt/' /etc/security/audit_control; sudo /usr/sbin/audit -s
+</xccdf-1.2:fix>
+        <xccdf-1.2:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+          <xccdf-1.2:check-content-ref href="ssg-macos1015-oval.xml" name="oval:ssg-audit_failure_halt:def:1" />
+        </xccdf-1.2:check>
+        <xccdf-1.2:check system="http://scap.nist.gov/schema/ocil/2">
+          <xccdf-1.2:check-content-ref href="ssg-macos1015-ocil.xml" name="ocil:ssg-audit_failure_halt_ocil:questionnaire:1" />
+        </xccdf-1.2:check>
+      </xccdf-1.2:Rule>
+    </xccdf-1.2:Group>
+  </xccdf-1.2:Group>
+  <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_intro">
+    <xccdf-1.2:title>Introduction</xccdf-1.2:title>
+    <xccdf-1.2:description>The purpose of this guidance is to provide security configuration
+recommendations and baselines for the Apple macOS 10.15 operating
+system. Recommended settings for the basic operating system are provided,
+as well as for many network services that the system can provide to other systems.
+The guide is intended for system administrators. Readers are assumed to
+possess basic system administration skills for Unix-like systems, as well
+as some familiarity with the product's documentation and administration
+conventions. Some instructions within this guide are complex.
+All directions should be followed completely and with understanding of
+their effects in order to avoid serious adverse effects on the system
+and its security.</xccdf-1.2:description>
+    <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_general-principles">
+      <xccdf-1.2:title>General Principles</xccdf-1.2:title>
+      <xccdf-1.2:description>The following general principles motivate much of the advice in this
+guide and should also influence any configuration decisions that are
+not explicitly covered.</xccdf-1.2:description>
+      <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_principle-encrypt-transmitted-data">
+        <xccdf-1.2:title>Encrypt Transmitted Data Whenever Possible</xccdf-1.2:title>
+        <xccdf-1.2:description>Data transmitted over a network, whether wired or wireless, is susceptible
+to passive monitoring. Whenever practical solutions for encrypting
+such data exist, they should be applied. Even if data is expected to
+be transmitted only over a local network, it should still be encrypted.
+Encrypting authentication data, such as passwords, is particularly
+important. Networks of Apple macOS 10.15 machines can and should be configured
+so that no unencrypted authentication data is ever transmitted between
+machines.</xccdf-1.2:description>
+      </xccdf-1.2:Group>
+      <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_principle-least-privilege">
+        <xccdf-1.2:title>Least Privilege</xccdf-1.2:title>
+        <xccdf-1.2:description>Grant the least privilege necessary for user accounts and software to perform tasks.
+For example, <html:code>sudo</html:code> can be implemented to limit authorization to super user
+accounts on the system only to designated personnel. Another example is to limit
+logins on server systems to only those administrators who need to log into them in
+order to perform administration tasks.</xccdf-1.2:description>
+      </xccdf-1.2:Group>
+      <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_principle-minimize-software">
+        <xccdf-1.2:title>Minimize Software to Minimize Vulnerability</xccdf-1.2:title>
+        <xccdf-1.2:description>The simplest way to avoid vulnerabilities in software is to avoid
+installing that software. Apple macOS 10.15
+allows for careful management of
+the set of software packages installed on a system. Installed software
+contributes to system vulnerability in several ways. Packages that
+include setuid programs may provide local attackers a potential path to
+privilege escalation. Packages that include network services may give
+this opportunity to network-based attackers. Packages that include
+programs which are predictably executed by local users (e.g. after
+graphical login) may provide opportunities for trojan horses or other
+attack code to be run undetected. The number of software packages
+installed on a system can almost always be significantly pruned to include
+only the software for which there is an environmental or operational need.</xccdf-1.2:description>
+      </xccdf-1.2:Group>
+      <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_principle-separate-servers">
+        <xccdf-1.2:title>Run Different Network Services on Separate Systems</xccdf-1.2:title>
+        <xccdf-1.2:description>Whenever possible, a server should be dedicated to serving exactly one
+network service. This limits the number of other services that can
+be compromised in the event that an attacker is able to successfully
+exploit a software flaw in one network service.</xccdf-1.2:description>
+      </xccdf-1.2:Group>
+      <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_principle-use-security-tools">
+        <xccdf-1.2:title>Configure Security Tools to Improve System Robustness</xccdf-1.2:title>
+        <xccdf-1.2:description>Several tools exist which can be effectively used to improve a system's
+resistance to and detection of unknown attacks. These tools can improve
+robustness against attack at the cost of relatively little configuration
+effort. In particular, this guide recommends and discusses the use of
+host-based firewalling, a logging, and auditing infrastructure for
+detection of problems.</xccdf-1.2:description>
+      </xccdf-1.2:Group>
+    </xccdf-1.2:Group>
+    <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_how-to-use">
+      <xccdf-1.2:title>How to Use This Guide</xccdf-1.2:title>
+      <xccdf-1.2:description>Readers should heed the following points when using the guide.</xccdf-1.2:description>
+      <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_intro-formatting-conventions">
+        <xccdf-1.2:title>Formatting Conventions</xccdf-1.2:title>
+        <xccdf-1.2:description>Commands intended for shell execution, as well as configuration file text,
+are featured in a <html:code>monospace font</html:code>. <html:i>Italics</html:i> are used
+to indicate instances where the system administrator must substitute
+the appropriate information into a command or configuration file.</xccdf-1.2:description>
+      </xccdf-1.2:Group>
+      <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_intro-read-sections-completely">
+        <xccdf-1.2:title>Read Sections Completely and in Order</xccdf-1.2:title>
+        <xccdf-1.2:description>Each section may build on information and recommendations discussed in
+prior sections. Each section should be read and understood completely;
+instructions should never be blindly applied. Relevant discussion may
+occur after instructions for an action.</xccdf-1.2:description>
+      </xccdf-1.2:Group>
+      <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_intro-reboot-required">
+        <xccdf-1.2:title>Reboot Required</xccdf-1.2:title>
+        <xccdf-1.2:description>A system reboot is implicitly required after some actions in order to
+complete the reconfiguration of the system. In many cases, the changes
+will not take effect until a reboot is performed. In order to ensure
+that changes are applied properly and to test functionality, always
+reboot the system after applying a set of recommendations from this guide.</xccdf-1.2:description>
+      </xccdf-1.2:Group>
+      <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_intro-root-shell-assumed">
+        <xccdf-1.2:title>Root Shell Environment Assumed</xccdf-1.2:title>
+        <xccdf-1.2:description>Most of the actions listed in this document are written with the
+assumption that they will be executed by the root user running the
+<html:code>/bin/bash</html:code> shell. Commands preceded with a hash mark (#)
+assume that the administrator will execute the commands as root, i.e.
+apply the command via <html:code>sudo</html:code> whenever possible, or use
+<html:code>su</html:code> to gain root privileges if <html:code>sudo</html:code> cannot be
+used. Commands which can be executed as a non-root user are are preceded
+by a dollar sign ($) prompt.</xccdf-1.2:description>
+      </xccdf-1.2:Group>
+      <xccdf-1.2:Group id="xccdf_org.ssgproject.content_group_intro-test-non-production">
+        <xccdf-1.2:title>Test in Non-Production Environment</xccdf-1.2:title>
+        <xccdf-1.2:description>This guidance should always be tested in a non-production environment
+before deployment. This test environment should simulate the setup in
+which the system will be deployed as closely as possible.</xccdf-1.2:description>
+      </xccdf-1.2:Group>
+    </xccdf-1.2:Group>
+  </xccdf-1.2:Group>
+</xccdf-1.2:Benchmark>

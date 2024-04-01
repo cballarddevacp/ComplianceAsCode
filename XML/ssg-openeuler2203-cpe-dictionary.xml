@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<cpe-dict:cpe-list xmlns:cpe-dict="http://cpe.mitre.org/dictionary/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cpe.mitre.org/dictionary/2.0 http://cpe.mitre.org/files/cpe-dictionary_2.1.xsd">
+  <cpe-dict:cpe-item name="cpe:/o:openEuler:openEuler:22.03LTS:ga:server">
+    <cpe-dict:title xml:lang="en-us">openEuler 22.03 LTS</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-openeuler2203-cpe-oval.xml">oval:ssg-installed_OS_is_openeuler2203:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:openEuler:openEuler:22.03LTS_SP1:ga:server">
+    <cpe-dict:title xml:lang="en-us">openEuler 22.03 LTS SP1</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-openeuler2203-cpe-oval.xml">oval:ssg-installed_OS_is_openeuler2203:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+  <cpe-dict:cpe-item name="cpe:/o:openEuler:openEuler:22.03LTS_SP2:ga:server">
+    <cpe-dict:title xml:lang="en-us">openEuler 22.03 LTS SP2</cpe-dict:title>
+    <cpe-dict:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="ssg-openeuler2203-cpe-oval.xml">oval:ssg-installed_OS_is_openeuler2203:def:1</cpe-dict:check>
+  </cpe-dict:cpe-item>
+</cpe-dict:cpe-list>

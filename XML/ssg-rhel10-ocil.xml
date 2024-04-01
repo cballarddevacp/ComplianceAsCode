@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ocil:ocil xmlns:ocil="http://scap.nist.gov/schema/ocil/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <ocil:generator>
+    <ocil:product_name>build_shorthand.py from SCAP Security Guide</ocil:product_name>
+    <ocil:product_version>ssg: 0.1.73</ocil:product_version>
+    <ocil:schema_version>2.0</ocil:schema_version>
+    <ocil:timestamp>2024-03-29T21:07:05</ocil:timestamp>
+  </ocil:generator>
+  <ocil:questionnaires>
+    <ocil:questionnaire id="ocil:ssg-package_sudo_installed_ocil:questionnaire:1">
+      <ocil:title>Install sudo Package</ocil:title>
+      <ocil:actions>
+        <ocil:test_action_ref>ocil:ssg-package_sudo_installed_action:testaction:1</ocil:test_action_ref>
+      </ocil:actions>
+    </ocil:questionnaire>
+  </ocil:questionnaires>
+  <ocil:test_actions>
+    <ocil:boolean_question_test_action id="ocil:ssg-package_sudo_installed_action:testaction:1" question_ref="ocil:ssg-package_sudo_installed_question:question:1">
+      <ocil:when_true>
+        <ocil:result>PASS</ocil:result>
+      </ocil:when_true>
+      <ocil:when_false>
+        <ocil:result>FAIL</ocil:result>
+      </ocil:when_false>
+    </ocil:boolean_question_test_action>
+  </ocil:test_actions>
+  <ocil:questions>
+    <ocil:boolean_question id="ocil:ssg-package_sudo_installed_question:question:1">
+      <ocil:question_text>Run the following command to determine if the sudo package is installed: $ rpm -q sudo
+      Is it the case that the package is not installed?
+      </ocil:question_text>
+    </ocil:boolean_question>
+  </ocil:questions>
+</ocil:ocil>
